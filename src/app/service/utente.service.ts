@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {UserLogin} from "../model/user-login";
+import {Login} from "../model/Login";
 import {AuthUrl} from "../url/auth.url";
 import {catchError, map, Observable, of} from "rxjs";
-import {UserDecoded} from "../model/user-decoded";
+import {TokenDecoded} from "../model/TokenDecoded";
 import {jwtDecode} from "jwt-decode";
 
 @Injectable({
@@ -12,9 +12,9 @@ import {jwtDecode} from "jwt-decode";
 export class UtenteService {
 
   token: string;
-  user: UserDecoded;
+  user: TokenDecoded;
   constructor(private http: HttpClient) { }
-  login(userCred: UserLogin): Observable<boolean> {
+  login(userCred: Login): Observable<boolean> {
     return this.http.post(AuthUrl.login(), userCred, {
       observe: "response",
     }).pipe(

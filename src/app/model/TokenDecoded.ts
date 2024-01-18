@@ -1,4 +1,4 @@
-export interface UserDecoded {
+export interface TokenDecoded {
   iat: number,
   exp: number,
   ruolo: string,

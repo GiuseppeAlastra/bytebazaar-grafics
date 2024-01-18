@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UtenteService} from "../../service/utente.service";
-import {UserLogin} from "../../model/user-login";
+import {Login} from "../../model/Login";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit{
   }
 
   login(): void {
-    const userCred: UserLogin = this.formLogin.value;
+    const userCred: Login = this.formLogin.value;
     this.loginSub = this.utenteService.login(userCred).subscribe({
       next: (esito) => {
         if(esito){
