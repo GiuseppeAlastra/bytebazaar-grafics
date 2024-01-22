@@ -41,12 +41,19 @@ export class UtenteService {
     3. se il token c'è controllo che non sia scaduto, lo decodifico e lo salvo nel service
     4. se il token c'è reindirizzo l'utente sulla pagina privata*/
 
-  registration(userCred: Registration): Observable<boolean>{
-    if(this.http.post(AuthUrl.registration(), userCred, {observe: "response"})){
-      return of(true);
-    }
-    else{
-      return of(false);
-    }
+
+  registration(userCred: Registration): Observable<boolean> {
+    return this.http.post(AuthUrl.registration(), userCred, { observe: 'response' })
+      .pipe(
+        map(response => {
+          // Gestisci la risposta come desiderato
+          // Ad esempio, puoi verificare lo stato della risposta e restituire true o false
+          return response.status === 200; // Modifica questa logica secondo le tue esigenze
+        }),
+        catchError(error => {
+          console.error('Errore durante la registrazione:', error);
+          return of(false); // Restituisci false in caso di errore
+        })
+      );
   }
 }

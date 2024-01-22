@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UtenteService} from "../../service/utente.service";
 import {Login} from "../../model/Login";
 import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit{
 
   //Subscription
   loginSub: Subscription
-
+  private router: Router
   constructor(private utenteService: UtenteService) {
   }
 
@@ -37,5 +38,8 @@ export class LoginComponent implements OnInit{
         }
       }
     })
+  }
+  NavRegistration(): void{
+    this.router.navigateByUrl('registration');
   }
 }

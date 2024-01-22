@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if(req.url.includes('login') || req.url.includes('registrazione')){
+    if(req.url.includes('login') || req.url.includes('registration')){
       return next.handle(req);
     } else {
       const token = 'Bearer ' + this.utenteService.token;

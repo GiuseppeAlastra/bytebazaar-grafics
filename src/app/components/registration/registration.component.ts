@@ -3,7 +3,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UtenteService} from "../../service/utente.service";
 import {Registration} from "../../model/Registration";
 import {Subscription} from "rxjs";
-import {Login} from "../../model/Login";
 
 @Component({
   selector: 'app-registration',
@@ -32,10 +31,12 @@ export class RegistrationComponent implements OnInit{
     const userCred: Registration = this.formRegistration.value;
     this.registrationSub = this.utenteService.registration(userCred).subscribe({
       next: (esito) => {
+        console.log(esito);
         if (esito) {
-          console.log(this.utenteService.user);
+
           // redirect alla pagina privata
         } else {
+          console.log("fottiti")
           // messaggio di errore
         }
       }
