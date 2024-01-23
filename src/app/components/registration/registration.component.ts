@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UtenteService} from "../../service/utente.service";
 import {Registration} from "../../model/Registration";
 import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-registration',
@@ -13,7 +14,7 @@ export class RegistrationComponent implements OnInit{
   formRegistration: FormGroup;
   //Subscription
   registrationSub: Subscription
-  constructor(private utenteService: UtenteService) {
+  constructor(private utenteService: UtenteService, private router : Router) {
   }
   ngOnInit() {
     this.formRegistration = new FormGroup({
@@ -33,7 +34,7 @@ export class RegistrationComponent implements OnInit{
       next: (esito) => {
         console.log(esito);
         if (esito) {
-
+          this.router.navigateByUrl("login");
           // redirect alla pagina privata
         } else {
           console.log("fottiti")
@@ -41,5 +42,8 @@ export class RegistrationComponent implements OnInit{
         }
       }
     });
+  }
+  NavLogin(): void{
+    this.router.navigateByUrl('login');
   }
 }
