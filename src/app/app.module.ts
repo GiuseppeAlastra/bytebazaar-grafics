@@ -8,12 +8,16 @@ import {AuthInterceptor} from "./service/auth.interceptor";
 import { LoginComponent } from './components/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { RegistrationComponent } from './components/registration/registration.component';
+import { ListaUtentiComponent } from './components/lista-utenti/lista-utenti.component';
+import { ListaProdottiComponent } from './components/lista-prodotti/lista-prodotti.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ListaUtentiComponent,
+    ListaProdottiComponent
   ],
   imports: [
     BrowserModule,
